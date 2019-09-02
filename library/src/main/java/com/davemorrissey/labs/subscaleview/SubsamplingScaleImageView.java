@@ -1108,8 +1108,9 @@ public class SubsamplingScaleImageView extends View {
                 matrix.mapRect(sRect);
                 canvas.drawRect(sRect, tileBgPaint);
             }
-            canvas.drawBitmap(bitmap, matrix, bitmapPaint);
-
+            if (!bitmap.isRecycled()) {
+                canvas.drawBitmap(bitmap, matrix, bitmapPaint);
+            }
         }
 
         if (debug) {
